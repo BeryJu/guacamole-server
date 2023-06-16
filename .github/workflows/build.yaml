@@ -23,6 +23,10 @@ jobs:
           guac_tag=$(git describe --tags)
           echo "tag=$guac_tag"
           echo "tag=$guac_tag" >> "$GITHUB_OUTPUT"
+      - name: Apply patches
+        run: |
+          cd guacamole-server
+          git apply ../*.patch
       - uses: docker/login-action@v2
         with:
           registry: ghcr.io
