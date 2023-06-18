@@ -38,4 +38,4 @@ jobs:
             ghcr.io/beryju/guacd:${{ steps.tag.outputs.tag }}
           push: ${{ github.ref == 'refs/heads/main' }}
           platforms: linux/amd64,linux/arm64
-          context: guacamole-server
+          context: .
