@@ -172,6 +172,8 @@ USER guacd
 # Expose the default listener port
 EXPOSE 4822
 
+LABEL org.opencontainers.image.source = "https://github.com/BeryJu/guacamole-server"
+
 # Start guacd, listening on port 0.0.0.0:4822
 #
 # Note the path here MUST correspond to the value specified in the
