@@ -3,7 +3,7 @@
 #
 
 # The Alpine Linux image that should be used as the basis for the guacd image
-ARG DEBIAN_BASE_IMAGE=bullseye
+ARG DEBIAN_BASE_IMAGE=bullseye-slim
 FROM debian:${DEBIAN_BASE_IMAGE} AS builder
 
 # Install build dependencies
