@@ -153,6 +153,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         ghostscript                   \
         netcat-openbsd                \
         fonts-terminus                \
+        libcairo2                     \
         fonts-dejavu                  \
         fonts-liberation           && \
     xargs apt-get install -y < ${PREFIX_DIR}/DEPENDENCIES
