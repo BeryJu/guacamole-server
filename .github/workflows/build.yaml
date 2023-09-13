@@ -30,7 +30,7 @@ jobs:
         run: |
           cd guacamole-server
           git apply ../*.patch
-      - uses: docker/login-action@v2
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
