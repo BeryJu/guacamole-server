@@ -154,6 +154,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         netcat-openbsd                \
         fonts-terminus                \
         libcairo2                     \
+        libpangocairo-1.0-0           \
         fonts-dejavu                  \
         fonts-liberation           && \
     xargs apt-get install -y < ${PREFIX_DIR}/DEPENDENCIES
