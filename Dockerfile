@@ -156,6 +156,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libcairo2                     \
         libpangocairo-1.0-0           \
         fonts-dejavu                  \
+        libpulse0                     \
         fonts-liberation           && \
     xargs apt-get install -y < ${PREFIX_DIR}/DEPENDENCIES
 
