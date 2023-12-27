@@ -1,4 +1,4 @@
 [submodule "guacamole-server"]
 	path = guacamole-server
 	url = https://github.com/apache/guacamole-server
-	branch = 1.5.4
+	branch = 1.5.3
