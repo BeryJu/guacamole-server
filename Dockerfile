@@ -15,6 +15,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libcairo2-dev                 \
         cmake                         \
         git                           \
+        libavcodec-dev                \
+        libavformat-dev               \
+        libavutil-dev                 \
+        libswscale-dev                \
         grep                          \
         libjpeg62-turbo-dev           \
         libpng-dev                    \
