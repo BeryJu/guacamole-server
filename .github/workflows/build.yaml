@@ -15,12 +15,14 @@ jobs:
       matrix:
         variants:
           - tag: ""
+            label: "Default"
           - tag: "-fips"
             patches: fips.patch
+            label: "FIPS"
             build-args: |
               BUILD_IMAGE=ghcr.io/goauthentik/fips-debian:bookworm-slim-fips
               RUN_IMAGE=ghcr.io/goauthentik/fips-debian:bookworm-slim-fips
-    name: Build
+    name: Build ${{ matrix.variants.label }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
