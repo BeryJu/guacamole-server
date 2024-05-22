@@ -3,8 +3,8 @@
 #
 
 # The Alpine Linux image that should be used as the basis for the guacd image
-ARG BUILD_IMAGE=ghcr.io/beryju/fips-debian:bookworm-slim-fips
-ARG RUN_IMAGE=ghcr.io/beryju/fips-debian:bookworm-slim-fips
+ARG BUILD_IMAGE=docker.io/library/debian:bookworm-slim
+ARG RUN_IMAGE=docker.io/library/debian:bookworm-slim
 FROM ${BUILD_IMAGE} AS builder
 
 # Install build dependencies
@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libtool-bin                   \
         libwebp-dev                   \
         make                          \
+        libssl-dev                    \
         libpango1.0-dev               \
         libpulse-dev                  \
         uuid-dev
