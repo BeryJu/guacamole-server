@@ -1,0 +1,12 @@
+diff --git a/Dockerfile b/Dockerfile
+index 4a8d304..ec0de52 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -26,7 +26,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+         libtool-bin                   \
+         libwebp-dev                   \
+         make                          \
+-        libssl-dev                    \
+         libpango1.0-dev               \
+         libpulse-dev                  \
+         uuid-dev

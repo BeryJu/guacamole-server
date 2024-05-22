@@ -3,8 +3,9 @@
 #
 
 # The Alpine Linux image that should be used as the basis for the guacd image
-ARG DEBIAN_BASE_IMAGE=bullseye-slim
-FROM debian:${DEBIAN_BASE_IMAGE} AS builder
+ARG BUILD_IMAGE=docker.io/library/debian:bookworm-slim
+ARG RUN_IMAGE=docker.io/library/debian:bookworm-slim
+FROM ${BUILD_IMAGE} AS builder
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -131,7 +132,7 @@ RUN ${BUILD_DIR}/src/guacd-docker/bin/list-dependencies.sh \
         > ${PREFIX_DIR}/DEPENDENCIES
 
 # Use same Alpine version as the base for the runtime image
-FROM debian:${DEBIAN_BASE_IMAGE}
+FROM ${RUN_IMAGE}
 
 #
 # Base directory for installed build artifacts. See also the
