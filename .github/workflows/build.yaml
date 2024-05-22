@@ -19,7 +19,7 @@ jobs:
           - tag: "-fips"
             patches: fips.patch
             label: "FIPS"
-            build-args: |
+            build_args: |
               BUILD_IMAGE=ghcr.io/goauthentik/fips-debian:bookworm-slim-fips
               RUN_IMAGE=ghcr.io/goauthentik/fips-debian:bookworm-slim-fips
     name: Build ${{ matrix.variants.label }}
@@ -59,4 +59,5 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
           platforms: linux/amd64,linux/arm64
           context: .
-          build-args: ${{ matrix.variants.build-args }}
+          build-args: |
+            ${{ matrix.variants.build_args }}
