@@ -12,6 +12,7 @@ permissions:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         variants:
           - tag: ""
@@ -20,8 +21,8 @@ jobs:
             patches: fips.patch
             label: "FIPS"
             build_args: |
-              BUILD_IMAGE=ghcr.io/goauthentik/fips-debian:bookworm-slim-fips
-              RUN_IMAGE=ghcr.io/goauthentik/fips-debian:bookworm-slim-fips
+              BUILD_IMAGE=ghcr.io/goauthentik/fips-debian:trixie-slim-fips
+              RUN_IMAGE=ghcr.io/goauthentik/fips-debian:trixie-slim-fips
     name: Build ${{ matrix.variants.label }}
     runs-on: ubuntu-latest
     steps:
@@ -35,8 +36,9 @@ jobs:
         run: |
           cd guacamole-server
           guac_tag=$(git describe --tags)
-          echo "tag=$guac_tag"
+          owner="${{ github.repository_owner }}"
           echo "tag=$guac_tag" >> "$GITHUB_OUTPUT"
+          echo "org=$(echo $owner | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
       - name: Apply patches
         run: |
           git apply ${{ matrix.variants.patches }} --allow-empty
@@ -48,7 +50,7 @@ jobs:
       - uses: docker/build-push-action@v6.18.0
         with:
           tags: |
-            ghcr.io/beryju/guacd:${{ steps.tag.outputs.tag }}${{ matrix.variants.tag }}
+            ghcr.io/${{ steps.tag.outputs.org }}/guacd:${{ steps.tag.outputs.tag }}${{ matrix.variants.tag }}
           push: ${{ github.ref == 'refs/heads/main' }}
           platforms: linux/amd64,linux/arm64
           context: .

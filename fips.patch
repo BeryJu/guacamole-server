@@ -6,7 +6,7 @@ index 4a8d304..ec0de52 100644
          libtool-bin                   \
          libwebp-dev                   \
          make                          \
--        libssl-dev                    \
+-        libssl3t64                    \
          libpango1.0-dev               \
          libpulse-dev                  \
          uuid-dev
